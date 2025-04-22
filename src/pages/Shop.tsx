@@ -27,20 +27,29 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-// Product data
+// Utilisation des images réelles chargées par l'utilisateur :
+const productImages = [
+  "/lovable-uploads/0d785652-336c-4ddb-9369-1a11b73674c1.png",
+  "/lovable-uploads/1fbdfa4a-8390-4d00-b613-77c259841a6f.png",
+  "/lovable-uploads/3f0cee3a-c66e-454f-afad-9f201c95b3b6.png",
+  "/lovable-uploads/b07aa7d4-7fda-47a3-babd-c0ffc56c3d9a.png",
+  "/lovable-uploads/eb145d05-2402-4da8-9fbd-34bfdfdecd32.png"
+];
+
+// Répartition des images pour les produits (ajustée au nombre de produits de chaque catégorie)
 const products = {
   creuses: [
-    { id: 1, name: "10 Creux", description: "Brique creuse standard 10cm", image: "https://images.unsplash.com/photo-1590406167775-b0bcef7df0de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1936&q=80" },
-    { id: 2, name: "12 Creux", description: "Brique creuse standard 12cm", image: "https://images.unsplash.com/photo-1638417387566-561817977758?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2068&q=80" },
-    { id: 3, name: "15 Creux", description: "Brique creuse standard 15cm", image: "https://images.unsplash.com/photo-1534081333815-ae5019106622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2036&q=80" },
+    { id: 1, name: "10 Creux", description: "Brique creuse standard 10cm", image: productImages[0] },
+    { id: 2, name: "12 Creux", description: "Brique creuse standard 12cm", image: productImages[1] },
+    { id: 3, name: "15 Creux", description: "Brique creuse standard 15cm", image: productImages[2] }
   ],
   pleines: [
-    { id: 4, name: "Brique Pleine Standard", description: "Brique pleine pour murs porteurs", image: "https://images.unsplash.com/photo-1599861258082-0a92469ceb3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" },
-    { id: 5, name: "Brique Pleine Grande", description: "Grande brique pleine pour structures", image: "https://images.unsplash.com/photo-1581011065967-0ebb55167e17?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" },
+    { id: 4, name: "Brique Pleine Standard", description: "Brique pleine pour murs porteurs", image: productImages[3] },
+    { id: 5, name: "Brique Pleine Grande", description: "Grande brique pleine pour structures", image: productImages[4] }
   ],
   hourdis: [
-    { id: 6, name: "Hourdis Standard", description: "Hourdis pour planchers", image: "https://images.unsplash.com/photo-1657558459655-27accf89b507?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" },
-    { id: 7, name: "Hourdis Léger", description: "Hourdis léger pour toitures", image: "https://images.unsplash.com/photo-1578271887552-5ac3a72752bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1889&q=80" },
+    { id: 6, name: "Hourdis Standard", description: "Hourdis pour planchers", image: productImages[1] },
+    { id: 7, name: "Hourdis Léger", description: "Hourdis léger pour toitures", image: productImages[2] }
   ]
 };
 

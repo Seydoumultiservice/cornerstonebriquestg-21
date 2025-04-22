@@ -5,8 +5,8 @@ import ImageCarousel from "./ImageCarousel";
 const Hero = () => {
   return (
     <div className="relative min-h-[600px] flex items-center bg-white text-white">
-      {/* Fond avec Carrousel */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
+      {/* Fond blanc + galerie */}
+      <div className="absolute inset-0 z-0 overflow-hidden bg-white">
         <ImageCarousel />
       </div>
 
