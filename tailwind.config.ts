@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -66,9 +67,11 @@ export default {
           brick: '#F25C05',    // Orange vif
           red: '#D32F2F',      // Rouge foncé
           white: '#FFFFFF',     // Blanc
+          blue: '#1976D2',      // Added blue color
           lightgray: '#F5F5F5', // Gris clair
           black: '#000000',     // Noir
           darkgray: '#424242',  // Gris foncé
+          brown: '#8D6E63',     // Added brown color
         }
       },
       fontFamily: {
