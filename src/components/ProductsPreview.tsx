@@ -8,21 +8,21 @@ const products = [
     id: 1,
     name: "Briques Creuses",
     description: "Idéales pour les murs non porteurs et cloisons intérieures",
-    image: "https://images.unsplash.com/photo-1534081333815-ae5019106622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2036&q=80",
+    image: "/lovable-uploads/ac5ba7f0-1184-47fc-9799-e72a6533109c.png",
     category: "creuses"
   },
   {
     id: 2,
     name: "Briques Pleines",
     description: "Parfaites pour les structures porteuses et les façades",
-    image: "https://images.unsplash.com/photo-1581011065967-0ebb55167e17?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+    image: "/lovable-uploads/4666dac9-56b5-43de-88d3-cdf5d141bd4a.png",
     category: "pleines"
   },
   {
     id: 3,
     name: "Hourdis",
     description: "Blocs de construction légers pour planchers et toits",
-    image: "https://images.unsplash.com/photo-1657558459655-27accf89b507?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    image: "/lovable-uploads/6cc08641-6389-48ad-8b1b-e54d72bbb219.png",
     category: "hourdis"
   }
 ];

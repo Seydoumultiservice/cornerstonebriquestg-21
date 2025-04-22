@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 const Cta = () => {
   return (
     <section className="py-16 relative bg-gray-900 text-white">
-      {/* Background Image with Overlay */}
+      {/* Image d'arrière-plan avec superposition */}
       <div 
         className="absolute inset-0 bg-cover bg-center z-0 opacity-30"
         style={{ 
-          backgroundImage: "url('https://images.unsplash.com/photo-1635001103334-ab2f96a1c19f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2148&q=80')",
+          backgroundImage: "url('/lovable-uploads/81b06260-a5d2-4692-9f08-65cdad35910f.png')",
         }}
       >
       </div>

@@ -18,25 +18,27 @@ const images = [
   '/lovable-uploads/886f30bf-8221-492b-a458-a2eb2b66013e.png'
 ];
 
-const intervals = [10000, 8000, 5000]; // Intervals in milliseconds
+const intervals = [10000, 8000, 5000]; // Intervalles en millisecondes
 
 const ImageCarousel = () => {
   const [api, setApi] = useState<any>();
   const [intervalIndex, setIntervalIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     if (!api) return;
 
-    // Function to scroll to next slide
+    // Fonction pour passer à la diapositive suivante
     const scrollNext = () => {
       api.scrollNext();
-      // Cycle through intervals
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+      // Alterner entre les intervalles
       setIntervalIndex((prev) => (prev + 1) % intervals.length);
     };
 
-    // Set up interval with current duration
+    // Configurer l'intervalle avec la durée actuelle
     const intervalId = setInterval(scrollNext, intervals[intervalIndex]);
-
+    
     return () => clearInterval(intervalId);
   }, [api, intervalIndex]);
 
@@ -44,22 +46,24 @@ const ImageCarousel = () => {
     <Carousel
       opts={{ loop: true }}
       setApi={setApi}
-      className="w-full max-w-full mx-auto"
+      className="w-full h-full"
     >
-      <CarouselContent>
+      <CarouselContent className="h-full">
         {images.map((image, index) => (
-          <CarouselItem key={index} className="relative h-[600px]">
-            <img
-              src={image}
-              alt={`Slide ${index + 1}`}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/30"></div>
+          <CarouselItem key={index} className="h-[600px]">
+            <div className="relative w-full h-full">
+              <img
+                src={image}
+                alt={`Slide ${index + 1}`}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/30"></div>
+            </div>
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className="left-4" />
-      <CarouselNext className="right-4" />
+      <CarouselPrevious className="absolute left-4 z-20" />
+      <CarouselNext className="absolute right-4 z-20" />
     </Carousel>
   );
 };
