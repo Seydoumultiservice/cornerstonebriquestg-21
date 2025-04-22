@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -51,7 +50,7 @@ const initialReviews: Review[] = [
   },
   {
     id: 2,
-    name: "Anne Dupont",
+    name: "Lucien Koumessi",
     date: "22/04/2023",
     rating: 4,
     comment: "Les briques sont de très bonne qualité, solides et uniformes. La livraison était rapide comme promis. Un point à améliorer serait la communication sur l'heure exacte de livraison, mais globalement très satisfaite.",
