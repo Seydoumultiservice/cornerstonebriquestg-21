@@ -16,7 +16,16 @@ import {
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Plus, Minus, ShoppingCart } from "lucide-react";
-import { toast } from "@/components/ui/use-toast";
+import { useCart } from "@/context/CartContext";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 // Product data
 const products = {
@@ -33,14 +42,6 @@ const products = {
     { id: 6, name: "Hourdis Standard", description: "Hourdis pour planchers", image: "https://images.unsplash.com/photo-1657558459655-27accf89b507?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" },
     { id: 7, name: "Hourdis Léger", description: "Hourdis léger pour toitures", image: "https://images.unsplash.com/photo-1578271887552-5ac3a72752bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1889&q=80" },
   ]
-};
-
-type ProductWithQuantity = {
-  id: number;
-  name: string;
-  description: string;
-  image: string;
-  quantity: number;
 };
 
 // Base price calculation (simulating price calculation logic)
@@ -73,6 +74,9 @@ const Shop = () => {
     category === "pleines" ? "pleines" : 
     category === "hourdis" ? "hourdis" : "creuses"
   );
+  const [cartOpen, setCartOpen] = useState(false);
+  
+  const { addToCart, items, removeFromCart, updateQuantity } = useCart();
 
   const handleQuantityChange = (id: number, value: string) => {
     const quantity = parseInt(value) || 0;
@@ -93,33 +97,19 @@ const Shop = () => {
     }
   };
 
-  const addToCart = (product: any) => {
+  const handleAddToCart = (product: any) => {
     const quantity = quantities[product.id] || 0;
-    if (quantity <= 0) {
-      toast({
-        title: "Erreur",
-        description: "Veuillez spécifier une quantité valide.",
-        variant: "destructive",
-      });
-      return;
-    }
+    if (quantity <= 0) return;
 
-    const productWithQuantity: ProductWithQuantity = {
-      ...product,
-      quantity
-    };
-
-    // Here we would normally add to cart state and/or localStorage
-    console.log("Produit ajouté:", productWithQuantity);
-    
-    toast({
-      title: "Produit ajouté au panier",
-      description: `${quantity} ${product.name} - ${formatPrice(calculatePrice(quantity))}`,
-    });
-
-    // Reset quantity
+    addToCart(product, quantity);
+    setCartOpen(true);
+    // Reset quantity after adding to cart
     setQuantities({ ...quantities, [product.id]: 0 });
   };
+
+  const subtotal = items.reduce((total, item) => {
+    return total + calculatePrice(item.quantity);
+  }, 0);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -133,6 +123,104 @@ const Shop = () => {
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Découvrez notre gamme complète de briques et matériaux de construction de haute qualité
             </p>
+          </div>
+
+          <div className="flex justify-end mb-4">
+            <Sheet open={cartOpen} onOpenChange={setCartOpen}>
+              <SheetTrigger asChild>
+                <Button className="bg-cornerstone-blue hover:bg-blue-600">
+                  <ShoppingCart className="mr-2 h-4 w-4" />
+                  Voir le panier ({items.length})
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[350px] sm:w-[450px]">
+                <SheetHeader>
+                  <SheetTitle>Votre Panier</SheetTitle>
+                  <SheetDescription>
+                    {items.length > 0 
+                      ? `Vous avez ${items.length} produit(s) dans votre panier.`
+                      : "Votre panier est vide."
+                    }
+                  </SheetDescription>
+                </SheetHeader>
+                
+                <div className="py-6">
+                  {items.length > 0 ? (
+                    <div className="space-y-4">
+                      {items.map((item) => (
+                        <div key={item.id} className="flex gap-4 pb-4 border-b">
+                          <div className="w-20 h-20 rounded-md overflow-hidden flex-shrink-0">
+                            <img 
+                              src={item.image} 
+                              alt={item.name} 
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <div className="flex-grow">
+                            <h3 className="font-medium">{item.name}</h3>
+                            <p className="text-gray-500 text-sm mb-1">{item.description}</p>
+                            <div className="flex items-center mt-1">
+                              <Button 
+                                variant="outline" 
+                                size="icon"
+                                className="h-7 w-7"
+                                onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                              >
+                                <Minus className="h-3 w-3" />
+                              </Button>
+                              <span className="mx-2 text-sm">{item.quantity}</span>
+                              <Button 
+                                variant="outline" 
+                                size="icon"
+                                className="h-7 w-7"
+                                onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                              >
+                                <Plus className="h-3 w-3" />
+                              </Button>
+                              <span className="ml-auto text-sm font-medium">
+                                {formatPrice(calculatePrice(item.quantity))}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                      
+                      <div className="pt-4">
+                        <div className="flex justify-between mb-4">
+                          <span className="font-medium">Sous-total:</span>
+                          <span className="font-medium">{formatPrice(subtotal)}</span>
+                        </div>
+                        <p className="text-xs text-gray-500 mb-6">
+                          Livraison et taxes calculées à l'étape suivante
+                        </p>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="text-center py-8">
+                      <ShoppingCart className="h-12 w-12 text-gray-300 mx-auto mb-4" />
+                      <p className="text-gray-500">Votre panier est vide.</p>
+                    </div>
+                  )}
+                </div>
+                
+                <SheetFooter className="sm:justify-start">
+                  <div className="space-y-3 w-full">
+                    <Link to="/panier" className="w-full block">
+                      <Button className="w-full bg-cornerstone-brick hover:bg-red-700">
+                        Voir le panier complet
+                      </Button>
+                    </Link>
+                    <Button 
+                      variant="outline" 
+                      className="w-full"
+                      onClick={() => setCartOpen(false)}
+                    >
+                      Continuer mes achats
+                    </Button>
+                  </div>
+                </SheetFooter>
+              </SheetContent>
+            </Sheet>
           </div>
 
           <Tabs 
@@ -202,7 +290,7 @@ const Shop = () => {
                       <CardFooter>
                         <Button 
                           className="w-full bg-cornerstone-blue hover:bg-blue-600"
-                          onClick={() => addToCart(product)}
+                          onClick={() => handleAddToCart(product)}
                           disabled={(quantities[product.id] || 0) <= 0}
                         >
                           <ShoppingCart className="mr-2 h-4 w-4" /> Ajouter au panier

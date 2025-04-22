@@ -1,11 +1,15 @@
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, ShoppingCart } from "lucide-react";
+import { Menu, X, ShoppingCart, User, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useCart } from "@/context/CartContext";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { getTotalItems } = useCart();
+  
+  const cartItemCount = getTotalItems();
 
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
@@ -24,33 +28,46 @@ const Navbar = () => {
             <Link to="/boutique" className="text-cornerstone-darkgray hover:text-cornerstone-brick transition-colors">
               Boutique
             </Link>
+            <Link to="/a-propos" className="text-cornerstone-darkgray hover:text-cornerstone-brick transition-colors">
+              À Propos
+            </Link>
             <Link to="/suivi" className="text-cornerstone-darkgray hover:text-cornerstone-brick transition-colors">
               Suivi
             </Link>
             <Link to="/contact" className="text-cornerstone-darkgray hover:text-cornerstone-brick transition-colors">
               Contact
             </Link>
+            <Link to="/avis" className="text-cornerstone-darkgray hover:text-cornerstone-brick transition-colors">
+              Avis
+            </Link>
             <Link to="/panier" className="relative">
               <ShoppingCart className="h-6 w-6 text-cornerstone-blue" />
-              <span className="absolute -top-2 -right-2 bg-cornerstone-brick text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                0
-              </span>
+              {cartItemCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-cornerstone-brick text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  {cartItemCount}
+                </span>
+              )}
             </Link>
-            <Button 
-              variant="default" 
-              className="bg-cornerstone-blue hover:bg-blue-600 text-white"
-            >
-              Mon Compte
-            </Button>
+            <Link to="/mon-compte">
+              <Button 
+                variant="default" 
+                className="bg-cornerstone-blue hover:bg-blue-600 text-white"
+              >
+                <User className="h-4 w-4 mr-2" />
+                Mon Compte
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
             <Link to="/panier" className="relative mr-4">
               <ShoppingCart className="h-6 w-6 text-cornerstone-blue" />
-              <span className="absolute -top-2 -right-2 bg-cornerstone-brick text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                0
-              </span>
+              {cartItemCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-cornerstone-brick text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  {cartItemCount}
+                </span>
+              )}
             </Link>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -79,6 +96,13 @@ const Navbar = () => {
               Boutique
             </Link>
             <Link 
+              to="/a-propos" 
+              className="text-cornerstone-darkgray hover:text-cornerstone-brick transition-colors py-2"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              À Propos
+            </Link>
+            <Link 
               to="/suivi" 
               className="text-cornerstone-darkgray hover:text-cornerstone-brick transition-colors py-2"
               onClick={() => setIsMenuOpen(false)}
@@ -92,13 +116,29 @@ const Navbar = () => {
             >
               Contact
             </Link>
-            <Button 
-              variant="default" 
-              className="bg-cornerstone-blue hover:bg-blue-600 text-white w-full"
+            <Link 
+              to="/avis" 
+              className="text-cornerstone-darkgray hover:text-cornerstone-brick transition-colors py-2"
               onClick={() => setIsMenuOpen(false)}
             >
-              Mon Compte
-            </Button>
+              <div className="flex items-center">
+                <Star className="h-4 w-4 mr-2" />
+                Avis
+              </div>
+            </Link>
+            <Link 
+              to="/mon-compte" 
+              className="text-cornerstone-darkgray hover:text-cornerstone-brick transition-colors py-2"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <Button 
+                variant="default" 
+                className="bg-cornerstone-blue hover:bg-blue-600 text-white w-full"
+              >
+                <User className="h-4 w-4 mr-2" />
+                Mon Compte
+              </Button>
+            </Link>
           </div>
         )}
       </div>
