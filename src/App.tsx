@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -15,6 +14,7 @@ import Account from "./pages/Account";
 import Cart from "./pages/Cart";
 import Reviews from "./pages/Reviews";
 import Login from "./components/Login";
+import ExitIntentPopup from "./components/ExitIntentPopup";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +25,7 @@ const App = () => (
         <BrowserRouter>
           <Toaster />
           <Sonner />
+          <ExitIntentPopup />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/login" element={<Login />} />
