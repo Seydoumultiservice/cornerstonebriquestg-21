@@ -1,4 +1,3 @@
-
 import { useState, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -7,8 +6,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Phone, Mail, MapPin, Send, Mic, MicOff, StopCircle, Trash2 } from "lucide-react";
+import { Phone, Mail, MapPin, Send, Mic, StopCircle, Trash2 } from "lucide-react";
 import { toast } from "@/components/ui/use-toast";
+import TogoFlag from "@/components/TogoFlag";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -128,6 +128,11 @@ const Contact = () => {
       <Navbar />
       <main className="flex-grow py-10">
         <div className="container mx-auto px-4">
+          {/* Add Togo flag at the top */}
+          <div className="mb-8">
+            <TogoFlag />
+          </div>
+
           <div className="mb-10 text-center">
             <h1 className="font-playfair text-3xl md:text-4xl font-bold mb-3 text-cornerstone-darkgray">
               Contactez-Nous
@@ -138,7 +143,6 @@ const Contact = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            {/* Contact Info */}
             <div className="order-2 lg:order-1">
               <div className="bg-white p-6 rounded-lg shadow-md">
                 <h2 className="font-playfair text-2xl font-semibold mb-6 text-cornerstone-darkgray">
@@ -180,8 +184,8 @@ const Contact = () => {
                     <div>
                       <h3 className="font-semibold text-lg text-cornerstone-darkgray">Email</h3>
                       <p className="text-gray-600">
-                        <a href="mailto:cornerstonebriques@gmail.com" className="hover:text-cornerstone-blue">
-                          cornerstonebriques@gmail.com
+                        <a href="mailto:contact@cornerstonebriques.com" className="hover:text-cornerstone-blue">
+                          contact@cornerstonebriques.com
                         </a>
                       </p>
                     </div>
@@ -221,7 +225,6 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Contact Form */}
             <div className="order-1 lg:order-2">
               <div className="bg-white p-6 rounded-lg shadow-md">
                 <h2 className="font-playfair text-2xl font-semibold mb-6 text-cornerstone-darkgray">

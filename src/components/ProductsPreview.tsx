@@ -1,33 +1,78 @@
-
-import { Link } from "react-router-dom";
+import { useState } from "react";
 import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ProductRangeModal from "./ProductRangeModal";
 
 const products = [
   {
     id: 1,
     name: "Briques Creuses",
     description: "Idéales pour les murs non porteurs et cloisons intérieures",
-    image: "/lovable-uploads/ac5ba7f0-1184-47fc-9799-e72a6533109c.png",
-    category: "creuses"
+    image: "/lovable-uploads/c03dbd08-2cca-4422-b778-dc01f808190b.png",
+    category: "creuses",
+    rangeProducts: [
+      {
+        title: "Brique Creuse Standard",
+        image: "/lovable-uploads/c03dbd08-2cca-4422-b778-dc01f808190b.png",
+        details: {
+          description: "Conçues pour les murs non porteurs et les cloisons intérieures, les briques creuses sont légères qui favorisent une meilleure isolation thermique et phonique.",
+          application: "Parfaites pour des projets résidentiels et tertiaires, elles offrent une solution efficace là où la réduction du poids et l'optimisation de l'isolation sont recherchées."
+        }
+      }
+    ]
   },
   {
     id: 2,
     name: "Briques Pleines",
     description: "Parfaites pour les structures porteuses et les façades",
-    image: "/lovable-uploads/4666dac9-56b5-43de-88d3-cdf5d141bd4a.png",
-    category: "pleines"
+    image: "/lovable-uploads/c001df33-8dc2-441a-9cf5-d21ae4a96410.png",
+    category: "pleines",
+    rangeProducts: [
+      {
+        title: "Brique Pleine Standard",
+        image: "/lovable-uploads/c001df33-8dc2-441a-9cf5-d21ae4a96410.png",
+        details: {
+          description: "Idéales pour les structures porteuses et la réalisation de façades, ces briques offrent une robustesse et une inertie thermique optimales.",
+          application: "Conçues pour apporter solidité et stabilité aux constructions, elles garantissent la pérennité des structures où elles sont utilisées."
+        }
+      }
+    ]
   },
   {
     id: 3,
     name: "Hourdis",
     description: "Blocs de construction légers pour planchers et toits",
-    image: "/lovable-uploads/6cc08641-6389-48ad-8b1b-e54d72bbb219.png",
-    category: "hourdis"
+    image: "/lovable-uploads/9388a76d-9aec-47ab-addd-cc222e0dbfe9.png",
+    category: "hourdis",
+    rangeProducts: [
+      {
+        title: "Hourdi Français 16",
+        image: "/lovable-uploads/9388a76d-9aec-47ab-addd-cc222e0dbfe9.png",
+        details: {
+          description: "La solution idéale pour la réalisation de dalles grâce à une inertie thermique remarquable, une excellente résistance au feu et une isolation phonique efficace.",
+          technicalSpecs: {
+            dimensions: "500 x 160 x 200 mm",
+            weight: "15,45 kg",
+            loadCapacity: "85 KN"
+          },
+          application: "Utilisé pour remplir l'espace entre les poutres d'une structure, cet hourdi représente une alternative durable, facile à installer et économique par rapport à d'autres matériaux comme le bois ou le béton coulé."
+        }
+      }
+    ]
   }
 ];
 
 const ProductsPreview = () => {
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = (category: string) => {
+    setSelectedCategory(category);
+    setIsModalOpen(true);
+  };
+
+  const selectedProducts = products.find(p => p.name === selectedCategory)?.rangeProducts || [];
+
   return (
     <section className="py-16 bg-cornerstone-lightgray">
       <div className="container mx-auto px-4">
@@ -60,16 +105,23 @@ const ProductsPreview = () => {
                 <p className="text-gray-600 mb-4">
                   {product.description}
                 </p>
-                <Link 
-                  to={`/boutique/${product.category}`}
-                  className="text-cornerstone-blue hover:text-blue-700 font-medium inline-flex items-center"
+                <Button 
+                  onClick={() => handleOpenModal(product.name)}
+                  className="text-cornerstone-blue hover:text-blue-700 font-medium inline-flex items-center bg-transparent p-0 hover:bg-transparent"
                 >
                   Voir la gamme <ChevronRight className="h-4 w-4 ml-1" />
-                </Link>
+                </Button>
               </div>
             </div>
           ))}
         </div>
+
+        <ProductRangeModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          category={selectedCategory || ""}
+          products={selectedProducts}
+        />
 
         <div className="text-center mt-12">
           <Link to="/boutique">

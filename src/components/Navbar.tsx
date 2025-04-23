@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, ShoppingCart, User, Star } from "lucide-react";
@@ -15,9 +14,12 @@ const Navbar = () => {
     <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-4 py-3">
         <div className="flex justify-between items-center">
-          <Link to="/" className="flex items-center space-x-2">
-            <span className="text-cornerstone-brick font-playfair font-bold text-2xl">Cornerstone</span>
-            <span className="text-cornerstone-brown font-playfair font-medium text-xl">Briques</span>
+          <Link to="/" className="flex items-center">
+            <img 
+              src="/lovable-uploads/be477d43-9690-4e2b-afb6-016905d4bb17.png"
+              alt="Cornerstone Briques Logo"
+              className="h-12 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
