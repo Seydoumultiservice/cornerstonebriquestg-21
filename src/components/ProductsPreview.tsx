@@ -1,3 +1,4 @@
+
 import { Link } from 'react-router-dom';
 import { useState } from "react";
 import { ChevronRight } from "lucide-react";
@@ -66,22 +67,28 @@ const products = [
 const ProductsPreview = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showAllProducts, setShowAllProducts] = useState(false);
 
   const handleOpenModal = (category: string) => {
     setSelectedCategory(category);
     setIsModalOpen(true);
   };
 
-  const selectedProducts = products.find(p => p.name === selectedCategory)?.rangeProducts || [];
+  const handleShowAllProducts = () => {
+    setShowAllProducts(true);
+  };
+
+  const selectedProducts = products.find(p => p.category === selectedCategory)?.rangeProducts || [];
+  const allProducts = showAllProducts ? products.flatMap(p => p.rangeProducts) : [];
 
   return (
     <section className="py-16 bg-cornerstone-lightgray">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-4 text-cornerstone-darkgray">
+          <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-4 text-cornerstone-darkgray animate-fade-in">
             Nos Produits de Qualité
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto animate-fade-in">
             Découvrez notre gamme complète de briques et matériaux de construction fabriqués avec les meilleurs standards de qualité
           </p>
         </div>
@@ -90,7 +97,7 @@ const ProductsPreview = () => {
           {products.map((product) => (
             <div 
               key={product.id}
-              className="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:translate-y-[-5px]"
+              className="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:translate-y-[-5px] animate-scale-in"
             >
               <div className="h-64 overflow-hidden">
                 <img 
@@ -107,7 +114,7 @@ const ProductsPreview = () => {
                   {product.description}
                 </p>
                 <Button 
-                  onClick={() => handleOpenModal(product.name)}
+                  onClick={() => handleOpenModal(product.category)}
                   className="text-cornerstone-blue hover:text-blue-700 font-medium inline-flex items-center bg-transparent p-0 hover:bg-transparent"
                 >
                   Voir la gamme <ChevronRight className="h-4 w-4 ml-1" />
@@ -125,13 +132,21 @@ const ProductsPreview = () => {
         />
 
         <div className="text-center mt-12">
-          <Link to="/boutique">
-            <Button 
-              className="bg-cornerstone-brick hover:bg-red-700 text-white"
-            >
-              Voir tous nos produits
-            </Button>
-          </Link>
+          <Button 
+            onClick={handleShowAllProducts}
+            className="bg-cornerstone-brick hover:bg-red-700 text-white animate-pulse"
+          >
+            Voir tous nos produits
+          </Button>
+
+          {showAllProducts && (
+            <ProductRangeModal
+              isOpen={showAllProducts}
+              onClose={() => setShowAllProducts(false)}
+              category="Tous les produits"
+              products={allProducts}
+            />
+          )}
         </div>
       </div>
     </section>
