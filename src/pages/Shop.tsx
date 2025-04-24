@@ -1,31 +1,12 @@
-
 import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Chatbot from "@/components/Chatbot";
-import { Button } from "@/components/ui/button";
-import { 
-  Card, 
-  CardContent, 
-  CardDescription, 
-  CardFooter, 
-  CardHeader, 
-  CardTitle 
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Plus, Minus, ShoppingCart } from "lucide-react";
 import { useCart } from "@/context/CartContext";
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import ProductGrid from "@/components/shop/ProductGrid";
+import CartSheet from "@/components/shop/CartSheet";
 
 // Utilisation des images réelles chargées par l'utilisateur :
 const productImages = [
@@ -112,13 +93,8 @@ const Shop = () => {
 
     addToCart(product, quantity);
     setCartOpen(true);
-    // Reset quantity after adding to cart
     setQuantities({ ...quantities, [product.id]: 0 });
   };
-
-  const subtotal = items.reduce((total, item) => {
-    return total + calculatePrice(item.quantity);
-  }, 0);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -135,101 +111,14 @@ const Shop = () => {
           </div>
 
           <div className="flex justify-end mb-4">
-            <Sheet open={cartOpen} onOpenChange={setCartOpen}>
-              <SheetTrigger asChild>
-                <Button className="bg-cornerstone-blue hover:bg-blue-600">
-                  <ShoppingCart className="mr-2 h-4 w-4" />
-                  Voir le panier ({items.length})
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right" className="w-[350px] sm:w-[450px]">
-                <SheetHeader>
-                  <SheetTitle>Votre Panier</SheetTitle>
-                  <SheetDescription>
-                    {items.length > 0 
-                      ? `Vous avez ${items.length} produit(s) dans votre panier.`
-                      : "Votre panier est vide."
-                    }
-                  </SheetDescription>
-                </SheetHeader>
-                
-                <div className="py-6">
-                  {items.length > 0 ? (
-                    <div className="space-y-4">
-                      {items.map((item) => (
-                        <div key={item.id} className="flex gap-4 pb-4 border-b">
-                          <div className="w-20 h-20 rounded-md overflow-hidden flex-shrink-0">
-                            <img 
-                              src={item.image} 
-                              alt={item.name} 
-                              className="w-full h-full object-cover"
-                            />
-                          </div>
-                          <div className="flex-grow">
-                            <h3 className="font-medium">{item.name}</h3>
-                            <p className="text-gray-500 text-sm mb-1">{item.description}</p>
-                            <div className="flex items-center mt-1">
-                              <Button 
-                                variant="outline" 
-                                size="icon"
-                                className="h-7 w-7"
-                                onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                              >
-                                <Minus className="h-3 w-3" />
-                              </Button>
-                              <span className="mx-2 text-sm">{item.quantity}</span>
-                              <Button 
-                                variant="outline" 
-                                size="icon"
-                                className="h-7 w-7"
-                                onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                              >
-                                <Plus className="h-3 w-3" />
-                              </Button>
-                              <span className="ml-auto text-sm font-medium">
-                                {formatPrice(calculatePrice(item.quantity))}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                      
-                      <div className="pt-4">
-                        <div className="flex justify-between mb-4">
-                          <span className="font-medium">Sous-total:</span>
-                          <span className="font-medium">{formatPrice(subtotal)}</span>
-                        </div>
-                        <p className="text-xs text-gray-500 mb-6">
-                          Livraison et taxes calculées à l'étape suivante
-                        </p>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="text-center py-8">
-                      <ShoppingCart className="h-12 w-12 text-gray-300 mx-auto mb-4" />
-                      <p className="text-gray-500">Votre panier est vide.</p>
-                    </div>
-                  )}
-                </div>
-                
-                <SheetFooter className="sm:justify-start">
-                  <div className="space-y-3 w-full">
-                    <Link to="/panier" className="w-full block">
-                      <Button className="w-full bg-cornerstone-brick hover:bg-red-700">
-                        Voir le panier complet
-                      </Button>
-                    </Link>
-                    <Button 
-                      variant="outline" 
-                      className="w-full"
-                      onClick={() => setCartOpen(false)}
-                    >
-                      Continuer mes achats
-                    </Button>
-                  </div>
-                </SheetFooter>
-              </SheetContent>
-            </Sheet>
+            <CartSheet
+              items={items}
+              open={cartOpen}
+              onOpenChange={setCartOpen}
+              updateQuantity={updateQuantity}
+              calculatePrice={calculatePrice}
+              formatPrice={formatPrice}
+            />
           </div>
 
           <Tabs 
@@ -246,68 +135,16 @@ const Shop = () => {
             
             {Object.entries(products).map(([key, productList]) => (
               <TabsContent key={key} value={key} className="mt-0">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {productList.map((product) => (
-                    <Card key={product.id} className="overflow-hidden">
-                      <div className="h-48 overflow-hidden">
-                        <img 
-                          src={product.image} 
-                          alt={product.name}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <CardHeader>
-                        <CardTitle>{product.name}</CardTitle>
-                        <CardDescription>{product.description}</CardDescription>
-                      </CardHeader>
-                      <CardContent>
-                        <div className="flex items-center space-x-3 mb-4">
-                          <Button 
-                            variant="outline" 
-                            size="icon"
-                            onClick={() => decrementQuantity(product.id)}
-                            disabled={(quantities[product.id] || 0) <= 0}
-                          >
-                            <Minus className="h-4 w-4" />
-                          </Button>
-                          <Input
-                            type="number"
-                            value={quantities[product.id] || ""}
-                            onChange={(e) => handleQuantityChange(product.id, e.target.value)}
-                            min={0}
-                            placeholder="Quantité"
-                            className="text-center"
-                          />
-                          <Button 
-                            variant="outline" 
-                            size="icon"
-                            onClick={() => incrementQuantity(product.id)}
-                          >
-                            <Plus className="h-4 w-4" />
-                          </Button>
-                        </div>
-
-                        {(quantities[product.id] || 0) > 0 && (
-                          <div className="bg-cornerstone-lightgray p-3 rounded-md text-center mb-3">
-                            <p className="text-sm text-gray-600">Estimation pour {quantities[product.id]} briques</p>
-                            <p className="text-lg font-bold text-cornerstone-darkgray">
-                              {formatPrice(calculatePrice(quantities[product.id]))}
-                            </p>
-                          </div>
-                        )}
-                      </CardContent>
-                      <CardFooter>
-                        <Button 
-                          className="w-full bg-cornerstone-blue hover:bg-blue-600"
-                          onClick={() => handleAddToCart(product)}
-                          disabled={(quantities[product.id] || 0) <= 0}
-                        >
-                          <ShoppingCart className="mr-2 h-4 w-4" /> Ajouter au panier
-                        </Button>
-                      </CardFooter>
-                    </Card>
-                  ))}
-                </div>
+                <ProductGrid
+                  products={productList}
+                  quantities={quantities}
+                  onQuantityChange={handleQuantityChange}
+                  onIncrement={incrementQuantity}
+                  onDecrement={decrementQuantity}
+                  onAddToCart={handleAddToCart}
+                  calculatePrice={calculatePrice}
+                  formatPrice={formatPrice}
+                />
               </TabsContent>
             ))}
           </Tabs>
