@@ -36,7 +36,7 @@ const ProductRangeModal: React.FC<ProductRangeModalProps> = ({
           <div className="flex items-center justify-between mb-6">
             <DialogTitle className="text-2xl font-playfair">{category}</DialogTitle>
             <img 
-              src="/lovable-uploads/e9fadad0-2262-4b40-9c15-ca07037e2928.png" 
+              src="/lovable-uploads/047e5b62-f0cc-4e54-99c5-c60c456f6bfb.png" 
               alt="Cornerstone Logo" 
               className="h-16 object-contain"
             />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Facebook, Instagram, Twitter } from 'lucide-react';
+import { Phone, Facebook, Instagram, Twitter, Youtube, Linkedin } from 'lucide-react';
 import TogoFlag from './TogoFlag';
 
 const Footer = () => {
@@ -46,7 +46,7 @@ const Footer = () => {
             <ul className="space-y-2">
               <li className="flex items-center">
                 <span className="mr-2">📍</span>
-                <span>123 Route de Kpalimé, Lomé, Togo</span>
+                <span>Akodessewa, Après les rails, non loin de la station d'essence CM, Lomé, Togo</span>
               </li>
               <li className="flex items-center hover:text-primary transition-colors">
                 <Phone className="mr-2 h-5 w-5" />
@@ -71,33 +71,46 @@ const Footer = () => {
           
           <div>
             <h3 className="text-xl font-semibold mb-4">Nous Suivre</h3>
-            <div className="flex space-x-4">
+            <div className="flex space-x-6">
               <a 
                 href="https://facebook.com/cornerstonebriques" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-white transition-colors flex items-center gap-2"
+                className="text-gray-300 hover:text-white transition-colors"
               >
                 <Facebook className="h-6 w-6" />
-                <span>Facebook</span>
               </a>
               <a 
                 href="https://instagram.com/cornerstonebriques" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-white transition-colors flex items-center gap-2"
+                className="text-gray-300 hover:text-white transition-colors"
               >
                 <Instagram className="h-6 w-6" />
-                <span>Instagram</span>
               </a>
               <a 
                 href="https://twitter.com/cornerstonebriques" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-white transition-colors flex items-center gap-2"
+                className="text-gray-300 hover:text-white transition-colors"
               >
                 <Twitter className="h-6 w-6" />
-                <span>Twitter</span>
+              </a>
+              <a 
+                href="https://youtube.com/cornerstonebriques" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                <Youtube className="h-6 w-6" />
+              </a>
+              <a 
+                href="https://linkedin.com/company/cornerstonebriques" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                <Linkedin className="h-6 w-6" />
               </a>
             </div>
           </div>
