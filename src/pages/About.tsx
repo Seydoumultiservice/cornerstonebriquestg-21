@@ -4,7 +4,6 @@ import Chatbot from "@/components/Chatbot";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import { Textarea } from "@/components/ui/textarea";
 import ImageGallery from "@/components/ImageGallery";
 import TogoFlag from "@/components/TogoFlag";
 
@@ -124,19 +123,12 @@ const About = () => {
           </div>
         </section>
 
-        {/* CTA Section with Project Description */}
+        {/* Call to Action */}
         <section className="py-16 bg-gradient-to-r from-[#F25C05] to-[#D32F2F]">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center text-white space-y-6">
-              <h2 className="text-3xl font-bold mb-4">Décrivez votre projet</h2>
-              <Textarea 
-                placeholder="Décrivez votre projet de construction en détail..." 
-                className="min-h-[150px] text-black"
-              />
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="inline-block"
-              >
+              <h2 className="text-3xl font-bold mb-4">Découvrez notre espace diaspora</h2>
+              <motion.div whileHover={{ scale: 1.05 }} className="inline-block">
                 <Button 
                   className="bg-white text-[#F25C05] hover:bg-[#F5F5F5] text-lg px-8 py-6 rounded-full shadow-lg"
                   onClick={() => window.open('https://www.cornerstonebrique-diaspora.com/', '_blank')}
