@@ -1,10 +1,9 @@
-
 import React, { useState } from 'react';
 import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
 import { Input } from "./ui/input";
 import { toast } from "@/hooks/use-toast";
-import { Upload, File, Video, Word, Pdf } from "lucide-react";
+import { Upload, File, Video, FileText, FileIcon } from "lucide-react";
 
 interface ProjectUploadFormProps {
   onClose: () => void;
@@ -60,8 +59,8 @@ const ProjectUploadForm: React.FC<ProjectUploadFormProps> = ({ onClose }) => {
   };
 
   const getFileIcon = (type: string) => {
-    if (type.includes('pdf')) return <Pdf className="h-5 w-5" />;
-    if (type.includes('word')) return <Word className="h-5 w-5" />;
+    if (type.includes('pdf')) return <FileText className="h-5 w-5" />;
+    if (type.includes('word')) return <FileIcon className="h-5 w-5" />;
     if (type.includes('video')) return <Video className="h-5 w-5" />;
     return <File className="h-5 w-5" />;
   };
