@@ -1,10 +1,12 @@
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Chatbot from "@/components/Chatbot";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { Textarea } from "@/components/ui/textarea";
+import ImageGallery from "@/components/ImageGallery";
+import TogoFlag from "@/components/TogoFlag";
 
 const About = () => {
   return (
@@ -20,6 +22,7 @@ const About = () => {
               transition={{ duration: 0.6 }}
               className="max-w-4xl mx-auto text-center"
             >
+              <TogoFlag />
               <h1 className="font-playfair text-4xl md:text-5xl font-bold mb-6 text-[#F25C05]">
                 Une solution innovante pour les Togolais et la diaspora
               </h1>
@@ -28,6 +31,12 @@ const About = () => {
                 particulièrement ceux de la diaspora. Les difficultés liées à l'envoi d'argent, la gestion à distance 
                 des projets, et les risques associés sont des préoccupations que nous prenons à cœur.
               </p>
+
+              {/* Galerie d'images */}
+              <div className="mt-8 mb-12">
+                <ImageGallery />
+              </div>
+
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
                 <motion.div 
                   whileHover={{ scale: 1.05 }}
@@ -115,17 +124,22 @@ const About = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
+        {/* CTA Section with Project Description */}
         <section className="py-16 bg-gradient-to-r from-[#F25C05] to-[#D32F2F]">
           <div className="container mx-auto px-4">
-            <div className="text-center">
+            <div className="max-w-3xl mx-auto text-center text-white space-y-6">
+              <h2 className="text-3xl font-bold mb-4">Décrivez votre projet</h2>
+              <Textarea 
+                placeholder="Décrivez votre projet de construction en détail..." 
+                className="min-h-[150px] text-black"
+              />
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 className="inline-block"
               >
                 <Button 
                   className="bg-white text-[#F25C05] hover:bg-[#F5F5F5] text-lg px-8 py-6 rounded-full shadow-lg"
-                  onClick={() => window.location.href = '/espace-diaspora'}
+                  onClick={() => window.open('https://www.cornerstonebrique-diaspora.com/', '_blank')}
                 >
                   Découvrir l'espace diaspora
                   <ArrowRight className="ml-2 h-5 w-5" />
