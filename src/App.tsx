@@ -9,6 +9,7 @@ import Cart from './pages/Cart';
 import { Toaster } from './components/ui/sonner';
 import FAQ from './pages/FAQ';
 import { CartProvider } from './context/CartContext';
+import ContactCallToAction from './components/ContactCallToAction';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/panier" element={<Cart />} />
           <Route path="/faq" element={<FAQ />} />
         </Routes>
+        <ContactCallToAction />
         <Toaster />
       </Router>
     </CartProvider>
