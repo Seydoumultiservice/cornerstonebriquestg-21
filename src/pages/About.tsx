@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Chatbot from "@/components/Chatbot";
@@ -7,13 +6,14 @@ import { ArrowRight, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import ContactCallToAction from "@/components/ContactCallToAction";
+import TogoFlag from "@/components/TogoFlag";
 
 const About = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-grow">
-        {/* Hero Section avec le nouveau drapeau */}
+        {/* Hero Section avec le drapeau du Togo */}
         <section className="bg-gradient-to-b from-[#F5F5F5] to-white py-16 md:py-24">
           <div className="container mx-auto px-4">
             <motion.div 
@@ -22,11 +22,7 @@ const About = () => {
               transition={{ duration: 0.6 }}
               className="max-w-4xl mx-auto text-center"
             >
-              <img 
-                src="/lovable-uploads/41ee7fc3-6a74-4211-adaa-2f710dde09bb.png"
-                alt="Drapeau du Togo"
-                className="w-32 h-20 mx-auto mb-8 rounded-lg shadow-lg object-cover"
-              />
+              <TogoFlag />
               <h1 className="font-playfair text-4xl md:text-5xl font-bold mb-6 text-[#F25C05]">
                 L'histoire de Cornerstone Briques : Bâtir l'avenir avec confiance
               </h1>

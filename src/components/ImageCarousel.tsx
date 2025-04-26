@@ -8,13 +8,16 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-// Utilisation des images chargées par l'utilisateur
+// Utilisation des nouvelles images chargées
 const images = [
-  "/lovable-uploads/0d785652-336c-4ddb-9369-1a11b73674c1.png",
-  "/lovable-uploads/1fbdfa4a-8390-4d00-b613-77c259841a6f.png",
-  "/lovable-uploads/3f0cee3a-c66e-454f-afad-9f201c95b3b6.png",
-  "/lovable-uploads/b07aa7d4-7fda-47a3-babd-c0ffc56c3d9a.png",
-  "/lovable-uploads/eb145d05-2402-4da8-9fbd-34bfdfdecd32.png"
+  "/lovable-uploads/dcea2990-4842-413e-93da-d20880beba51.png",
+  "/lovable-uploads/127e4ffa-7afc-4ee0-ac18-f037fc31f377.png",
+  "/lovable-uploads/cb336614-2f01-411b-9a54-d393f321fef1.png",
+  "/lovable-uploads/63c49fa0-42af-4afe-8c10-b4cef0193b31.png",
+  "/lovable-uploads/4d868688-dd1c-4537-bca8-80a23fc3e52f.png",
+  "/lovable-uploads/aed86bea-eec6-4d26-b96b-e695c4818ad1.png",
+  "/lovable-uploads/d916edf3-d8aa-4b38-83fc-cb851342fd5c.png",
+  "/lovable-uploads/daa88119-0787-491c-babb-3de9c11eed31.png"
 ];
 
 const intervals = [10000, 8000, 5000]; // en millisecondes
