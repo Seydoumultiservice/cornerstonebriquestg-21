@@ -42,13 +42,13 @@ const Hero = () => {
             className="flex flex-wrap gap-4"
           >
             <Link 
-              to="/boutique" 
+              to="/nos-produits" 
               className="bg-cornerstone-brick hover:bg-red-700 text-white px-6 py-3 rounded-md font-medium transition-colors hover:scale-105 transform duration-200"
             >
               Voir nos produits
             </Link>
             <Link 
-              to="/boutique" 
+              to="/panier" 
               className="bg-cornerstone-brown hover:bg-amber-800 text-white px-6 py-3 rounded-md font-medium transition-colors hover:scale-105 transform duration-200"
             >
               Commander maintenant

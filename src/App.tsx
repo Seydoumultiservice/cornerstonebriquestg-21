@@ -1,52 +1,27 @@
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import IndexPage from './pages/Index';
+import About from './pages/About';
+import Shop from './pages/Shop';
+import Contact from './pages/Contact';
+import Cart from './pages/Cart';
+import { ToastProvider } from './context/ToastContext';
+import FAQ from './pages/FAQ';
 
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { CartProvider } from "@/context/CartContext";
-import Index from "./pages/Index";
-import Shop from "./pages/Shop";
-import Contact from "./pages/Contact";
-import OrderTracking from "./pages/OrderTracking";
-import NotFound from "./pages/NotFound";
-import About from "./pages/About";
-import Account from "./pages/Account";
-import Cart from "./pages/Cart";
-import Reviews from "./pages/Reviews";
-import Login from "./components/Login";
-import ExitIntentPopup from "./components/ExitIntentPopup";
-
-const queryClient = new QueryClient();
-
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <CartProvider>
-      <TooltipProvider>
-        <BrowserRouter>
-          <Toaster />
-          <Sonner />
-          <ExitIntentPopup />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/nos-produits" element={<Shop />} />
-            <Route path="/nos-produits/:category" element={<Shop />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/suivi" element={<OrderTracking />} />
-            <Route path="/a-propos" element={<About />} />
-            <Route path="/mon-compte" element={<Account />} />
-            <Route path="/panier" element={<Cart />} />
-            <Route path="/avis" element={<Reviews />} />
-            {/* Redirects for old routes */}
-            <Route path="/boutique" element={<Navigate replace to="/nos-produits" />} />
-            <Route path="/boutique/:category" element={<Navigate replace to="/nos-produits/:category" />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </CartProvider>
-  </QueryClientProvider>
-);
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<IndexPage />} />
+        <Route path="/a-propos" element={<About />} />
+        <Route path="/nos-produits" element={<Shop />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/panier" element={<Cart />} />
+        <Route path="/faq" element={<FAQ />} />
+      </Routes>
+      <ToastProvider />
+    </Router>
+  );
+}
 
 export default App;

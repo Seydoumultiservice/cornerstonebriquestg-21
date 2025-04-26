@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from 'react-router-dom';
 import { ChevronRight } from "lucide-react";
@@ -44,20 +43,20 @@ const products = [
     id: 3,
     name: "Hourdis",
     description: "Blocs de construction légers pour planchers et toits",
-    image: "/lovable-uploads/9388a76d-9aec-47ab-addd-cc222e0dbfe9.png",
+    image: "/lovable-uploads/0663235b-c07d-46b1-a48d-26e49576db7c.png",
     category: "hourdis",
     rangeProducts: [
       {
-        title: "Hourdi Français 16",
-        image: "/lovable-uploads/9388a76d-9aec-47ab-addd-cc222e0dbfe9.png",
+        title: "Hourdi Standard",
+        image: "/lovable-uploads/45a519a7-2e69-4252-a411-65e0051894ce.png",
         details: {
-          description: "La solution idéale pour la réalisation de dalles grâce à une inertie thermique remarquable, une excellente résistance au feu et une isolation phonique efficace.",
+          description: "Nos hourdis sont conçus pour offrir une excellente isolation thermique et acoustique tout en garantissant une résistance optimale. Idéals pour la construction de planchers et de toitures.",
           technicalSpecs: {
-            dimensions: "500 x 160 x 200 mm",
-            weight: "15,45 kg",
-            loadCapacity: "85 KN"
+            dimensions: "60cm x 20cm",
+            weight: "15-18 kg",
+            loadCapacity: "Supporte jusqu'à 250 kg/m²"
           },
-          application: "Utilisé pour remplir l'espace entre les poutres d'une structure, cet hourdi représente une alternative durable, facile à installer et économique par rapport à d'autres matériaux comme le bois ou le béton coulé."
+          application: "Parfait pour la construction de planchers intermédiaires et de toitures. Offre une excellente isolation thermique et acoustique."
         }
       }
     ]
