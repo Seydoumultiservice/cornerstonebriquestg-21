@@ -1,5 +1,6 @@
+
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Chatbot from "@/components/Chatbot";
@@ -8,65 +9,92 @@ import { useCart } from "@/context/CartContext";
 import ProductGrid from "@/components/shop/ProductGrid";
 import CartSheet from "@/components/shop/CartSheet";
 
-// Utilisation des images réelles chargées par l'utilisateur :
+// Prix des briques (non affichés directement sur la page)
+const productPrices = {
+  "10 Creux": 250,
+  "12 Creux": 300,
+  "15 Creux": 380, 
+  "20 Creux": 500,
+  "10 Plein": 350,
+  "12 Plein": 460,
+  "15 Plein": 500,
+  "Hourdis 12": 500,
+  "Hourdis 15": 600
+};
+
+// Utilisation des images réelles chargées par l'utilisateur
 const productImages = [
-  "/lovable-uploads/0d785652-336c-4ddb-9369-1a11b73674c1.png",
-  "/lovable-uploads/1fbdfa4a-8390-4d00-b613-77c259841a6f.png",
-  "/lovable-uploads/3f0cee3a-c66e-454f-afad-9f201c95b3b6.png",
-  "/lovable-uploads/b07aa7d4-7fda-47a3-babd-c0ffc56c3d9a.png",
-  "/lovable-uploads/eb145d05-2402-4da8-9fbd-34bfdfdecd32.png"
+  "/lovable-uploads/0d785652-336c-4ddb-9369-1a11b73674c1.png", // 10 Creux
+  "/lovable-uploads/1fbdfa4a-8390-4d00-b613-77c259841a6f.png", // 12 Creux
+  "/lovable-uploads/3f0cee3a-c66e-454f-afad-9f201c95b3b6.png", // 15 Creux
+  "/lovable-uploads/b07aa7d4-7fda-47a3-babd-c0ffc56c3d9a.png", // 20 Creux
+  "/lovable-uploads/c001df33-8dc2-441a-9cf5-d21ae4a96410.png", // 10 Plein
+  "/lovable-uploads/eb145d05-2402-4da8-9fbd-34bfdfdecd32.png", // 12 Plein
+  "/lovable-uploads/3f0cee3a-c66e-454f-afad-9f201c95b3b6.png", // 15 Plein
+  "/lovable-uploads/9388a76d-9aec-47ab-addd-cc222e0dbfe9.png", // Hourdis 12
+  "/lovable-uploads/1fbdfa4a-8390-4d00-b613-77c259841a6f.png", // Hourdis 15
+  "/lovable-uploads/e35e187c-9474-4c77-b300-95626e8a879b.png"  // Pavé (à venir)
 ];
 
-// Répartition des images pour les produits (ajustée au nombre de produits de chaque catégorie)
+// Répartition des produits par catégorie avec dimensions
 const products = {
   creuses: [
-    { id: 1, name: "10 Creux", description: "Brique creuse standard 10cm", image: productImages[0] },
-    { id: 2, name: "12 Creux", description: "Brique creuse standard 12cm", image: productImages[1] },
-    { id: 3, name: "15 Creux", description: "Brique creuse standard 15cm", image: productImages[2] }
+    { id: 1, name: "10 Creux", description: "Dimensions: 40cm x 20cm x 10cm", image: productImages[0], price: productPrices["10 Creux"] },
+    { id: 2, name: "12 Creux", description: "Dimensions: 40cm x 20cm x 12cm", image: productImages[1], price: productPrices["12 Creux"] },
+    { id: 3, name: "15 Creux", description: "Dimensions: 40cm x 20cm x 15cm", image: productImages[2], price: productPrices["15 Creux"] },
+    { id: 4, name: "20 Creux", description: "Dimensions: 40cm x 20cm x 20cm", image: productImages[3], price: productPrices["20 Creux"] }
   ],
   pleines: [
-    { id: 4, name: "Brique Pleine Standard", description: "Brique pleine pour murs porteurs", image: productImages[3] },
-    { id: 5, name: "Brique Pleine Grande", description: "Grande brique pleine pour structures", image: productImages[4] }
+    { id: 5, name: "10 Plein", description: "Dimensions: 40cm x 20cm x 10cm", image: productImages[4], price: productPrices["10 Plein"] },
+    { id: 6, name: "12 Plein", description: "Dimensions: 40cm x 20cm x 12cm", image: productImages[5], price: productPrices["12 Plein"] },
+    { id: 7, name: "15 Plein", description: "Dimensions: 40cm x 20cm x 15cm", image: productImages[6], price: productPrices["15 Plein"] }
   ],
   hourdis: [
-    { id: 6, name: "Hourdis Standard", description: "Hourdis pour planchers", image: productImages[1] },
-    { id: 7, name: "Hourdis Léger", description: "Hourdis léger pour toitures", image: productImages[2] }
+    { id: 8, name: "Hourdis 12", description: "Dimensions: 60cm x 20cm x 12cm", image: productImages[7], price: productPrices["Hourdis 12"] },
+    { id: 9, name: "Hourdis 15", description: "Dimensions: 60cm x 20cm x 15cm", image: productImages[8], price: productPrices["Hourdis 15"] }
+  ],
+  pave: [
+    { id: 10, name: "Pavé", description: "À venir prochainement", image: productImages[9], comingSoon: true }
   ]
 };
 
-// Base price calculation (simulating price calculation logic)
-const calculatePrice = (quantity: number): number => {
-  const basePriceFor250 = 50000; // 50,000 XOF for 250 bricks
-  
+// Base price calculation based on quantity
+const calculatePrice = (quantity: number, unitPrice: number): number => {
   if (quantity <= 0) return 0;
   
   // Apply discounts based on quantity
   if (quantity < 250) {
-    return Math.round((basePriceFor250 / 250) * quantity);
+    return quantity * unitPrice;
   } else if (quantity < 1000) {
-    return Math.round((basePriceFor250 / 250) * quantity * 0.95); // 5% discount
+    return Math.round(quantity * unitPrice * 0.95); // 5% discount
   } else if (quantity < 5000) {
-    return Math.round((basePriceFor250 / 250) * quantity * 0.9); // 10% discount
+    return Math.round(quantity * unitPrice * 0.9); // 10% discount
   } else {
-    return Math.round((basePriceFor250 / 250) * quantity * 0.85); // 15% discount
+    return Math.round(quantity * unitPrice * 0.85); // 15% discount
   }
 };
 
 // Format price to XOF
 const formatPrice = (price: number): string => {
-  return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " XOF";
+  return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " FCFA";
 };
 
 const Shop = () => {
-  const { category = "creuses" } = useParams<{ category?: string }>();
+  const { category } = useParams<{ category?: string }>();
   const [quantities, setQuantities] = useState<{ [key: number]: number }>({});
   const [activeTab, setActiveTab] = useState<string>(
     category === "pleines" ? "pleines" : 
-    category === "hourdis" ? "hourdis" : "creuses"
+    category === "hourdis" ? "hourdis" :
+    category === "pave" ? "pave" : "creuses"
   );
   const [cartOpen, setCartOpen] = useState(false);
   
-  const { addToCart, items, removeFromCart, updateQuantity } = useCart();
+  const { addToCart, items, updateQuantity } = useCart();
+
+  // Redirect if old URL format is used
+  if (category && !["creuses", "pleines", "hourdis", "pave"].includes(category)) {
+    return <Navigate to="/nos-produits" replace />;
+  }
 
   const handleQuantityChange = (id: number, value: string) => {
     const quantity = parseInt(value) || 0;
@@ -89,7 +117,7 @@ const Shop = () => {
 
   const handleAddToCart = (product: any) => {
     const quantity = quantities[product.id] || 0;
-    if (quantity <= 0) return;
+    if (quantity <= 0 || product.comingSoon) return;
 
     addToCart(product, quantity);
     setCartOpen(true);
@@ -116,7 +144,7 @@ const Shop = () => {
               open={cartOpen}
               onOpenChange={setCartOpen}
               updateQuantity={updateQuantity}
-              calculatePrice={calculatePrice}
+              calculatePrice={(quantity, product) => calculatePrice(quantity, product.price)}
               formatPrice={formatPrice}
             />
           </div>
@@ -127,10 +155,11 @@ const Shop = () => {
             onValueChange={setActiveTab}
             className="w-full"
           >
-            <TabsList className="grid w-full grid-cols-3 mb-8">
+            <TabsList className="grid w-full grid-cols-4 mb-8">
               <TabsTrigger value="creuses">Briques Creuses</TabsTrigger>
               <TabsTrigger value="pleines">Briques Pleines</TabsTrigger>
               <TabsTrigger value="hourdis">Hourdis</TabsTrigger>
+              <TabsTrigger value="pave">Pavé</TabsTrigger>
             </TabsList>
             
             {Object.entries(products).map(([key, productList]) => (
@@ -142,7 +171,7 @@ const Shop = () => {
                   onIncrement={incrementQuantity}
                   onDecrement={decrementQuantity}
                   onAddToCart={handleAddToCart}
-                  calculatePrice={calculatePrice}
+                  calculatePrice={(quantity, product) => calculatePrice(quantity, product.price)}
                   formatPrice={formatPrice}
                 />
               </TabsContent>

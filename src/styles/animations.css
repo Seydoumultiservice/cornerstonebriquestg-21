@@ -1,0 +1,22 @@
+
+@keyframes wave {
+  0% {
+    transform: translateX(0) scaleY(1);
+  }
+  25% {
+    transform: translateX(-1%) scaleY(0.97);
+  }
+  50% {
+    transform: translateX(0) scaleY(1);
+  }
+  75% {
+    transform: translateX(1%) scaleY(1.03);
+  }
+  100% {
+    transform: translateX(0) scaleY(1);
+  }
+}
+
+.animate-wave {
+  animation: wave 3s ease-in-out infinite;
+}

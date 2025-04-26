@@ -61,6 +61,24 @@ const products = [
         }
       }
     ]
+  },
+  {
+    id: 4,
+    name: "Pavés",
+    description: "Idéaux pour les allées et espaces extérieurs",
+    image: "/lovable-uploads/e35e187c-9474-4c77-b300-95626e8a879b.png",
+    category: "pave",
+    comingSoon: true,
+    rangeProducts: [
+      {
+        title: "Pavés (Bientôt disponible)",
+        image: "/lovable-uploads/e35e187c-9474-4c77-b300-95626e8a879b.png",
+        details: {
+          description: "Nos pavés sont conçus pour offrir une finition élégante et durable à vos espaces extérieurs.",
+          application: "Parfaits pour les allées de jardin, les terrasses et les entrées de garage."
+        }
+      }
+    ]
   }
 ];
 
@@ -93,11 +111,11 @@ const ProductsPreview = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {products.map((product) => (
             <div 
               key={product.id}
-              className="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:translate-y-[-5px] animate-scale-in"
+              className="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:translate-y-[-5px] animate-scale-in relative"
             >
               <div className="h-64 overflow-hidden">
                 <img 
@@ -105,6 +123,11 @@ const ProductsPreview = () => {
                   alt={product.name}
                   className="w-full h-full object-cover transition-transform hover:scale-105 duration-500"
                 />
+                {product.comingSoon && (
+                  <div className="absolute top-0 right-0 bg-yellow-500 text-white px-3 py-1 rounded-bl-lg">
+                    À venir
+                  </div>
+                )}
               </div>
               <div className="p-6">
                 <h3 className="font-playfair text-xl font-semibold mb-2 text-cornerstone-darkgray">
@@ -116,6 +139,7 @@ const ProductsPreview = () => {
                 <Button 
                   onClick={() => handleOpenModal(product.category)}
                   className="text-cornerstone-blue hover:text-blue-700 font-medium inline-flex items-center bg-transparent p-0 hover:bg-transparent"
+                  disabled={product.comingSoon}
                 >
                   Voir la gamme <ChevronRight className="h-4 w-4 ml-1" />
                 </Button>
@@ -132,21 +156,13 @@ const ProductsPreview = () => {
         />
 
         <div className="text-center mt-12">
-          <Button 
-            onClick={handleShowAllProducts}
-            className="bg-cornerstone-brick hover:bg-red-700 text-white animate-pulse"
-          >
-            Voir tous nos produits
-          </Button>
-
-          {showAllProducts && (
-            <ProductRangeModal
-              isOpen={showAllProducts}
-              onClose={() => setShowAllProducts(false)}
-              category="Tous les produits"
-              products={allProducts}
-            />
-          )}
+          <Link to="/nos-produits">
+            <Button 
+              className="bg-cornerstone-brick hover:bg-red-700 text-white animate-pulse"
+            >
+              Voir tous nos produits
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

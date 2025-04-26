@@ -7,6 +7,8 @@ interface Product {
   name: string;
   description: string;
   image: string;
+  price?: number;
+  comingSoon?: boolean;
 }
 
 interface ProductGridProps {
@@ -16,7 +18,7 @@ interface ProductGridProps {
   onIncrement: (id: number) => void;
   onDecrement: (id: number) => void;
   onAddToCart: (product: Product) => void;
-  calculatePrice: (quantity: number) => number;
+  calculatePrice: (quantity: number, product: Product) => number;
   formatPrice: (price: number) => string;
 }
 

@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, ShoppingCart, User, Star } from "lucide-react";
@@ -27,8 +28,8 @@ const Navbar = () => {
             <Link to="/" className="text-cornerstone-darkgray hover:text-cornerstone-brick transition-colors">
               Accueil
             </Link>
-            <Link to="/boutique" className="text-cornerstone-darkgray hover:text-cornerstone-brick transition-colors">
-              Boutique
+            <Link to="/nos-produits" className="text-cornerstone-darkgray hover:text-cornerstone-brick transition-colors">
+              Nos Produits
             </Link>
             <Link to="/a-propos" className="text-cornerstone-darkgray hover:text-cornerstone-brick transition-colors">
               À Propos
@@ -91,11 +92,11 @@ const Navbar = () => {
               Accueil
             </Link>
             <Link 
-              to="/boutique" 
+              to="/nos-produits" 
               className="text-cornerstone-darkgray hover:text-cornerstone-brick transition-colors py-2"
               onClick={() => setIsMenuOpen(false)}
             >
-              Boutique
+              Nos Produits
             </Link>
             <Link 
               to="/a-propos" 

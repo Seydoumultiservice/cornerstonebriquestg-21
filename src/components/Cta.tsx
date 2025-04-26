@@ -23,7 +23,7 @@ const Cta = () => {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link 
-              to="/boutique" 
+              to="/panier" 
               className="bg-cornerstone-brick hover:bg-red-700 text-white px-8 py-3 rounded-md font-medium transition-colors"
             >
               Commander Maintenant

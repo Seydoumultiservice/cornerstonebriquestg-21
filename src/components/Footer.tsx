@@ -1,6 +1,7 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Facebook, Instagram, Twitter, Youtube, Linkedin } from 'lucide-react';
+import { Phone, Facebook, Instagram, Twitter, Youtube, Linkedin, Tiktok } from 'lucide-react';
 import TogoFlag from './TogoFlag';
 
 const Footer = () => {
@@ -24,8 +25,8 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/boutique" className="text-gray-300 hover:text-white transition-colors">
-                  Boutique
+                <Link to="/nos-produits" className="text-gray-300 hover:text-white transition-colors">
+                  Nos Produits
                 </Link>
               </li>
               <li>
@@ -71,12 +72,12 @@ const Footer = () => {
           
           <div>
             <h3 className="text-xl font-semibold mb-4">Nous Suivre</h3>
-            <div className="flex space-x-6">
+            <div className="flex space-x-4 flex-wrap gap-y-2">
               <a 
                 href="https://facebook.com/cornerstonebriques" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-white transition-colors"
+                className="text-gray-300 hover:text-white transition-colors transform hover:scale-110"
               >
                 <Facebook className="h-6 w-6" />
               </a>
@@ -84,7 +85,7 @@ const Footer = () => {
                 href="https://instagram.com/cornerstonebriques" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-white transition-colors"
+                className="text-gray-300 hover:text-white transition-colors transform hover:scale-110"
               >
                 <Instagram className="h-6 w-6" />
               </a>
@@ -92,7 +93,7 @@ const Footer = () => {
                 href="https://twitter.com/cornerstonebriques" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-white transition-colors"
+                className="text-gray-300 hover:text-white transition-colors transform hover:scale-110"
               >
                 <Twitter className="h-6 w-6" />
               </a>
@@ -100,7 +101,7 @@ const Footer = () => {
                 href="https://youtube.com/cornerstonebriques" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-white transition-colors"
+                className="text-gray-300 hover:text-white transition-colors transform hover:scale-110"
               >
                 <Youtube className="h-6 w-6" />
               </a>
@@ -108,9 +109,17 @@ const Footer = () => {
                 href="https://linkedin.com/company/cornerstonebriques" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-white transition-colors"
+                className="text-gray-300 hover:text-white transition-colors transform hover:scale-110"
               >
                 <Linkedin className="h-6 w-6" />
+              </a>
+              <a 
+                href="https://tiktok.com/@cornerstonebriques" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:text-white transition-colors transform hover:scale-110"
+              >
+                <Tiktok className="h-6 w-6" />
               </a>
             </div>
           </div>
