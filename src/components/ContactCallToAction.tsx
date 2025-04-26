@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { WhatsApp, Phone, X } from 'lucide-react';
+import { Phone, X, Wand2 } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 
 const ContactCallToAction = () => {
@@ -64,7 +64,7 @@ const ContactCallToAction = () => {
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-white bg-green-500 hover:bg-green-600 px-4 py-2 rounded-lg transition-colors"
             >
-              <WhatsApp className="w-5 h-5" />
+              <Wand2 className="w-5 h-5" />
               Nous contacter sur WhatsApp
             </a>
           </div>
