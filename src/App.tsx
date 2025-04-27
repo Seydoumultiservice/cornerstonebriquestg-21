@@ -10,6 +10,7 @@ import { Toaster } from './components/ui/sonner';
 import FAQ from './pages/FAQ';
 import { CartProvider } from './context/CartContext';
 import ContactCallToAction from './components/ContactCallToAction';
+import OrderTracking from './pages/OrderTracking';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/panier" element={<Cart />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/suivi" element={<OrderTracking />} />
         </Routes>
         <ContactCallToAction />
         <Toaster />
