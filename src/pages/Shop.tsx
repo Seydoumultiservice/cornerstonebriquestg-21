@@ -24,16 +24,16 @@ const productPrices = {
 
 // Utilisation des images réelles chargées par l'utilisateur
 const productImages = [
-  "/lovable-uploads/0d785652-336c-4ddb-9369-1a11b73674c1.png", // 10 Creux
-  "/lovable-uploads/1fbdfa4a-8390-4d00-b613-77c259841a6f.png", // 12 Creux
-  "/lovable-uploads/3f0cee3a-c66e-454f-afad-9f201c95b3b6.png", // 15 Creux
-  "/lovable-uploads/b07aa7d4-7fda-47a3-babd-c0ffc56c3d9a.png", // 20 Creux
-  "/lovable-uploads/c001df33-8dc2-441a-9cf5-d21ae4a96410.png", // 10 Plein
-  "/lovable-uploads/eb145d05-2402-4da8-9fbd-34bfdfdecd32.png", // 12 Plein
-  "/lovable-uploads/3f0cee3a-c66e-454f-afad-9f201c95b3b6.png", // 15 Plein
-  "/lovable-uploads/9388a76d-9aec-47ab-addd-cc222e0dbfe9.png", // Hourdis 12
-  "/lovable-uploads/1fbdfa4a-8390-4d00-b613-77c259841a6f.png", // Hourdis 15
-  "/lovable-uploads/e35e187c-9474-4c77-b300-95626e8a879b.png"  // Pavé (à venir)
+  "/lovable-uploads/19970d785652-336c-4ddb-9369-1a11b73674c1.png", // 10 Creux
+  "/lovable-uploads/1997fbdfa4a-8390-4d00-b613-77c259841a6f.png", // 12 Creux
+  "/lovable-uploads/1997cee3a-c66e-454f-afad-9f201c95b3b6.png", // 15 Creux
+  "/lovable-uploads/1997b07aa7d4-7fda-47a3-babd-c0ffc56c3d9a.png", // 20 Creux
+  "/lovable-uploads/c03dbd08-2cca-4422-b778-dc01f808190b.png", // 10 Plein
+  "/lovable-uploads/1997eb145d05-2402-4da8-9fbd-34bfdfdecd32.png", // 12 Plein
+  "/lovable-uploads/c03dbd08-2cca-4422-b778-dc01f808190b.png", // 15 Plein
+  "/lovable-uploads/45a519a7-2e69-4252-a411-65e0051894ce.png", // Hourdis 12
+  "/lovable-uploads/aed86bea-eec6-4d26-b96b-e695c4818ad1.png", // Hourdis 15
+  "/lovable-uploads/e1997e187c-9474-4c77-b300-95626e8a879b.png"  // Pavé (à venir)
 ];
 
 // Répartition des produits par catégorie avec dimensions
