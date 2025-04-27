@@ -2,6 +2,7 @@
 import React from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
+import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar';
 
 const images = [
@@ -20,11 +21,30 @@ const Gallery = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold mb-8 text-center">Notre Galerie</h1>
+        <motion.h1 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-4xl font-bold mb-8 text-center"
+        >
+          Notre Galerie
+        </motion.h1>
         <ScrollArea className="w-full">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {images.map((image, index) => (
-              <div key={index} className="rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <motion.div 
+                key={index} 
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                whileHover={{ scale: 1.05 }}
+                transition={{ 
+                  duration: 0.3, 
+                  delay: index * 0.1,
+                  type: "spring",
+                  stiffness: 300
+                }}
+                className="rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+              >
                 <AspectRatio ratio={16 / 9}>
                   <img
                     src={image}
@@ -32,7 +52,7 @@ const Gallery = () => {
                     className="object-cover w-full h-full"
                   />
                 </AspectRatio>
-              </div>
+              </motion.div>
             ))}
           </div>
         </ScrollArea>
