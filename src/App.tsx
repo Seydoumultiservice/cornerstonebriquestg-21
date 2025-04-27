@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import IndexPage from './pages/Index';
@@ -11,6 +10,7 @@ import FAQ from './pages/FAQ';
 import { CartProvider } from './context/CartContext';
 import ContactCallToAction from './components/ContactCallToAction';
 import OrderTracking from './pages/OrderTracking';
+import Gallery from './pages/Gallery';
 
 function App() {
   return (
@@ -24,6 +24,7 @@ function App() {
           <Route path="/panier" element={<Cart />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/suivi" element={<OrderTracking />} />
+          <Route path="/galerie" element={<Gallery />} />
         </Routes>
         <ContactCallToAction />
         <Toaster />

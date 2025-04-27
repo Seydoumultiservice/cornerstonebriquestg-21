@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, ShoppingCart, User, Star } from "lucide-react";
@@ -23,13 +22,15 @@ const Navbar = () => {
             />
           </Link>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
             <Link to="/" className="text-cornerstone-darkgray hover:text-cornerstone-brick transition-colors">
               Accueil
             </Link>
             <Link to="/nos-produits" className="text-cornerstone-darkgray hover:text-cornerstone-brick transition-colors">
               Nos Produits
+            </Link>
+            <Link to="/galerie" className="text-cornerstone-darkgray hover:text-cornerstone-brick transition-colors">
+              Galerie
             </Link>
             <Link to="/a-propos" className="text-cornerstone-darkgray hover:text-cornerstone-brick transition-colors">
               À Propos
@@ -62,7 +63,6 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
             <Link to="/panier" className="relative mr-4">
               <ShoppingCart className="h-6 w-6 text-cornerstone-blue" />
@@ -81,7 +81,6 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden mt-4 pb-4 flex flex-col space-y-3">
             <Link 
@@ -97,6 +96,13 @@ const Navbar = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               Nos Produits
+            </Link>
+            <Link 
+              to="/galerie" 
+              className="text-cornerstone-darkgray hover:text-cornerstone-brick transition-colors py-2"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Galerie
             </Link>
             <Link 
               to="/a-propos" 
