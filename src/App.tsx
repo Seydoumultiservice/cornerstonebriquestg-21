@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import IndexPage from './pages/Index';
@@ -11,6 +12,9 @@ import { CartProvider } from './context/CartContext';
 import ContactCallToAction from './components/ContactCallToAction';
 import OrderTracking from './pages/OrderTracking';
 import Gallery from './pages/Gallery';
+import Reviews from './pages/Reviews';
+import Account from './pages/Account';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -25,6 +29,9 @@ function App() {
           <Route path="/faq" element={<FAQ />} />
           <Route path="/suivi" element={<OrderTracking />} />
           <Route path="/galerie" element={<Gallery />} />
+          <Route path="/avis" element={<Reviews />} />
+          <Route path="/mon-compte" element={<Account />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
         <ContactCallToAction />
         <Toaster />
