@@ -9,12 +9,12 @@ const products = [
     id: 1,
     name: "Briques Creuses",
     description: "Idéales pour les murs non porteurs et cloisons intérieures",
-    image: "/lovable-uploads/c03dbd08-2cca-4422-b778-dc01f808190b.png",
+    image: "/lovable-uploads/c001df33-8dc2-441a-9cf5-d21ae4a96410.png",
     category: "creuses",
     rangeProducts: [
       {
         title: "Brique Creuse Standard",
-        image: "/lovable-uploads/c03dbd08-2cca-4422-b778-dc01f808190b.png",
+        image: "/lovable-uploads/63c49fa0-42af-4afe-8c10-b4cef0193b31.png",
         details: {
           description: "Conçues pour les murs non porteurs et les cloisons intérieures, les briques creuses sont légères qui favorisent une meilleure isolation thermique et phonique.",
           application: "Parfaites pour des projets résidentiels et tertiaires, elles offrent une solution efficace là où la réduction du poids et l'optimisation de l'isolation sont recherchées."
@@ -26,12 +26,12 @@ const products = [
     id: 2,
     name: "Briques Pleines",
     description: "Parfaites pour les structures porteuses et les façades",
-    image: "/lovable-uploads/c001df33-8dc2-441a-9cf5-d21ae4a96410.png",
+    image: "/lovable-uploads/c03dbd08-2cca-4422-b778-dc01f808190b.png",
     category: "pleines",
     rangeProducts: [
       {
         title: "Brique Pleine Standard",
-        image: "/lovable-uploads/c001df33-8dc2-441a-9cf5-d21ae4a96410.png",
+        image: "/lovable-uploads/c04dbd08-2cca-4422-b778-dc01f808190b.png",
         details: {
           description: "Idéales pour les structures porteuses et la réalisation de façades, ces briques offrent une robustesse et une inertie thermique optimales.",
           application: "Conçues pour apporter solidité et stabilité aux constructions, elles garantissent la pérennité des structures où elles sont utilisées."
@@ -65,13 +65,13 @@ const products = [
     id: 4,
     name: "Pavés",
     description: "Idéaux pour les allées et espaces extérieurs",
-    image: "/lovable-uploads/e35e187c-9474-4c77-b300-95626e8a879b.png",
+    image: "/lovable-uploads/e1997e187c-9474-4c77-b300-95626e8a879b.png",
     category: "pave",
     comingSoon: true,
     rangeProducts: [
       {
         title: "Pavés (Bientôt disponible)",
-        image: "/lovable-uploads/e35e187c-9474-4c77-b300-95626e8a879b.png",
+        image: "/lovable-uploads/e1997e187c-9474-4c77-b300-95626e8a879b.png",
         details: {
           description: "Nos pavés sont conçus pour offrir une finition élégante et durable à vos espaces extérieurs.",
           application: "Parfaits pour les allées de jardin, les terrasses et les entrées de garage."
