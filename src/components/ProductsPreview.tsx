@@ -18,6 +18,7 @@ const products = [
         details: {
           description: "Conçues pour les murs non porteurs et les cloisons intérieures, les briques creuses sont légères qui favorisent une meilleure isolation thermique et phonique.",
           application: "Parfaites pour des projets résidentiels et tertiaires, elles offrent une solution efficace là où la réduction du poids et l'optimisation de l'isolation sont recherchées."
+		  Dimensions: "10 Creux : 40x20x10 cm • 12 Creux : 40x20x12 cm – 14,25 Kg • 15 Creux : 40x20x15 cm – 16,10 Kg • 20 Creux : 40x20x20 cm."
         }
       }
     ]
@@ -33,7 +34,7 @@ const products = [
         title: "Brique Pleine Standard",
         image: "/lovable-uploads/c04dbd08-2cca-4422-b778-dc01f808190b.png",
         details: {
-          description: "Idéales pour les structures porteuses et la réalisation de façades, ces briques offrent une robustesse et une inertie thermique optimales.",
+          description: "Nos briques 15 PLEIN (25 Kg), 12 PLEIN (21,50 Kg) et 10 PLEIN (19 Kg) sont conçues pour offrir une robustesse exceptionnelle, garantissant une grande résistance mécanique et une longévité accrue aux structures..",
           application: "Conçues pour apporter solidité et stabilité aux constructions, elles garantissent la pérennité des structures où elles sont utilisées."
         }
       }
@@ -53,7 +54,7 @@ const products = [
           description: "Nos hourdis sont conçus pour offrir une excellente isolation thermique et acoustique tout en garantissant une résistance optimale. Idéals pour la construction de planchers et de toitures.",
           technicalSpecs: {
             dimensions: "60cm x 20cm",
-            weight: "15-18 kg",
+            weight: "24,40 - 26,15 kg",
             loadCapacity: "Supporte jusqu'à 250 kg/m²"
           },
           application: "Parfait pour la construction de planchers intermédiaires et de toitures. Offre une excellente isolation thermique et acoustique."
