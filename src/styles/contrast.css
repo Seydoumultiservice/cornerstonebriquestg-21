@@ -11,18 +11,51 @@
   --background-dark: #1E293B;
   --link-color: #0EA5E9;
   --button-hover: #7C3AED;
+  --site-background: #121212; /* Nouveau fond foncé pour le site */
 }
 
 /* Styles globaux améliorés */
 body {
-  color: var(--text-dark);
-  background-color: var(--background-light);
+  color: var(--text-light);
+  background-color: var(--site-background);
 }
 
 /* Amélioration des contrastes pour les titres */
 h1, h2, h3, h4, h5, h6 {
-  color: var(--text-dark);
+  color: var(--text-light);
   font-weight: 700;
+}
+
+/* Amélioration des contrastes pour les sections */
+section {
+  background-color: #1A1F2C;
+  margin: 0.5rem 0;
+  border-radius: 8px;
+}
+
+section.bg-cornerstone-lightgray {
+  background-color: #1A1F2C;
+}
+
+/* Amélioration des contrastes pour les cartes */
+.card, 
+.product-card,
+[class*="card"],
+.bg-white {
+  background-color: #2A2F3C !important;
+  color: var(--text-light);
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+/* Text colors for better contrast */
+.text-gray-600 {
+  color: #CBD5E1 !important;
+}
+
+.text-cornerstone-darkgray {
+  color: #E2E8F0 !important;
 }
 
 /* Amélioration des contrastes pour les boutons */
@@ -56,26 +89,18 @@ a:not(.btn):not(.button):not([role="button"]):hover {
   color: var(--enhanced-primary);
 }
 
-/* Amélioration de contraste pour les cartes */
-.card, 
-.product-card,
-[class*="card"] {
-  border: 1px solid rgba(0,0,0,0.1);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
-}
-
 .card:hover,
 .product-card:hover,
 [class*="card"]:hover {
-  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
   transform: translateY(-4px);
+  background-color: #323845 !important;
 }
 
 /* Amélioration des couleurs pour la navigation */
 .navbar, nav, header {
-  background-color: white;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  background-color: #1A1F2C;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
 }
 
 /* Amélioration pour les badges et étiquettes */
@@ -87,7 +112,7 @@ a:not(.btn):not(.button):not([role="button"]):hover {
 
 /* Amélioration pour les sections alternées */
 section:nth-child(odd) {
-  background-color: #f8fafc;
+  background-color: #232733;
 }
 
 /* Amélioration pour les boutons d'achat/call-to-action */
@@ -112,7 +137,9 @@ section:nth-child(odd) {
 
 /* Amélioration pour les formulaires */
 input, select, textarea {
-  border: 2px solid #E2E8F0 !important;
+  border: 2px solid #3F4655 !important;
+  background-color: #2A2F3C !important;
+  color: var(--text-light) !important;
   transition: all 0.2s ease;
 }
 
