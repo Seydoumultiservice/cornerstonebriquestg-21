@@ -1,0 +1,131 @@
+
+/* Amélioration du contraste pour tout le site */
+:root {
+  --enhanced-primary: #8B5CF6;
+  --enhanced-secondary: #D946EF;
+  --enhanced-accent: #F97316;
+  --enhanced-highlight: #0EA5E9;
+  --text-dark: #0F172A;
+  --text-light: #F8FAFC;
+  --background-light: #FFFFFF;
+  --background-dark: #1E293B;
+  --link-color: #0EA5E9;
+  --button-hover: #7C3AED;
+}
+
+/* Styles globaux améliorés */
+body {
+  color: var(--text-dark);
+  background-color: var(--background-light);
+}
+
+/* Amélioration des contrastes pour les titres */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-dark);
+  font-weight: 700;
+}
+
+/* Amélioration des contrastes pour les boutons */
+.btn-primary, 
+button[type="submit"],
+.button-primary {
+  background-color: var(--enhanced-primary) !important;
+  color: white !important;
+  border: none !important;
+  transition: all 0.3s ease !important;
+}
+
+.btn-primary:hover, 
+button[type="submit"]:hover,
+.button-primary:hover {
+  background-color: var(--button-hover) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.25);
+}
+
+/* Amélioration des contrastes pour les liens */
+a:not(.btn):not(.button):not([role="button"]) {
+  color: var(--link-color);
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+a:not(.btn):not(.button):not([role="button"]):hover {
+  text-decoration: underline;
+  color: var(--enhanced-primary);
+}
+
+/* Amélioration de contraste pour les cartes */
+.card, 
+.product-card,
+[class*="card"] {
+  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.card:hover,
+.product-card:hover,
+[class*="card"]:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  transform: translateY(-4px);
+}
+
+/* Amélioration des couleurs pour la navigation */
+.navbar, nav, header {
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* Amélioration pour les badges et étiquettes */
+.badge, .label, .tag {
+  background-color: var(--enhanced-secondary);
+  color: white;
+  font-weight: 600;
+}
+
+/* Amélioration pour les sections alternées */
+section:nth-child(odd) {
+  background-color: #f8fafc;
+}
+
+/* Amélioration pour les boutons d'achat/call-to-action */
+.btn-cta, 
+.cta-button,
+.purchase-button {
+  background: linear-gradient(135deg, var(--enhanced-primary), var(--enhanced-secondary)) !important;
+  color: white !important;
+  font-weight: 600 !important;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 0.5rem !important;
+  transition: all 0.3s ease !important;
+  border: none !important;
+}
+
+.btn-cta:hover,
+.cta-button:hover,
+.purchase-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(139, 92, 246, 0.3);
+}
+
+/* Amélioration pour les formulaires */
+input, select, textarea {
+  border: 2px solid #E2E8F0 !important;
+  transition: all 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--enhanced-primary) !important;
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2) !important;
+  outline: none !important;
+}
+
+/* Amélioration des prix */
+.price, 
+[class*="price"],
+.amount {
+  color: var(--enhanced-accent) !important;
+  font-weight: 700 !important;
+}
