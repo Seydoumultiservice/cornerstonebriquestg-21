@@ -17,8 +17,8 @@ const products = [
         image: "/lovable-uploads/63c49fa0-42af-4afe-8c10-b4cef0193b31.png",
         details: {
           description: "Conçues pour les murs non porteurs et les cloisons intérieures, les briques creuses sont légères qui favorisent une meilleure isolation thermique et phonique.",
-          application: "Parfaites pour des projets résidentiels et tertiaires, elles offrent une solution efficace là où la réduction du poids et l'optimisation de l'isolation sont recherchées."
-		  Dimensions: "10 Creux : 40x20x10 cm • 12 Creux : 40x20x12 cm – 14,25 Kg • 15 Creux : 40x20x15 cm – 16,10 Kg • 20 Creux : 40x20x20 cm."
+          application: "Parfaites pour des projets résidentiels et tertiaires, elles offrent une solution efficace là où la réduction du poids et l'optimisation de l'isolation sont recherchées.",
+          dimensions: "10 Creux : 40x20x10 cm • 12 Creux : 40x20x12 cm – 14,25 Kg • 15 Creux : 40x20x15 cm – 16,10 Kg • 20 Creux : 40x20x20 cm."
         }
       }
     ]
