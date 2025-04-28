@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, ShoppingCart, User, Star } from "lucide-react";
@@ -29,17 +30,17 @@ const Navbar = () => {
             <Link to="/nos-produits" className="text-cornerstone-darkgray hover:text-cornerstone-brick transition-colors">
               Nos Produits
             </Link>
-            <Link to="/galerie" className="text-cornerstone-darkgray hover:text-cornerstone-brick transition-colors">
-              Galerie
-            </Link>
             <Link to="/a-propos" className="text-cornerstone-darkgray hover:text-cornerstone-brick transition-colors">
               À Propos
             </Link>
-            <Link to="/suivi" className="text-cornerstone-darkgray hover:text-cornerstone-brick transition-colors">
-              Suivi
-            </Link>
             <Link to="/contact" className="text-cornerstone-darkgray hover:text-cornerstone-brick transition-colors">
               Contact
+            </Link>
+            <Link to="/galerie" className="text-cornerstone-darkgray hover:text-cornerstone-brick transition-colors">
+              Galerie
+            </Link>
+            <Link to="/suivi" className="text-cornerstone-darkgray hover:text-cornerstone-brick transition-colors">
+              Suivi
             </Link>
             <Link to="/avis" className="text-cornerstone-darkgray hover:text-cornerstone-brick transition-colors">
               Avis
@@ -98,13 +99,6 @@ const Navbar = () => {
               Nos Produits
             </Link>
             <Link 
-              to="/galerie" 
-              className="text-cornerstone-darkgray hover:text-cornerstone-brick transition-colors py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Galerie
-            </Link>
-            <Link 
               to="/a-propos" 
               className="text-cornerstone-darkgray hover:text-cornerstone-brick transition-colors py-2"
               onClick={() => setIsMenuOpen(false)}
@@ -112,18 +106,25 @@ const Navbar = () => {
               À Propos
             </Link>
             <Link 
-              to="/suivi" 
-              className="text-cornerstone-darkgray hover:text-cornerstone-brick transition-colors py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Suivi
-            </Link>
-            <Link 
               to="/contact" 
               className="text-cornerstone-darkgray hover:text-cornerstone-brick transition-colors py-2"
               onClick={() => setIsMenuOpen(false)}
             >
               Contact
+            </Link>
+            <Link 
+              to="/galerie" 
+              className="text-cornerstone-darkgray hover:text-cornerstone-brick transition-colors py-2"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Galerie
+            </Link>
+            <Link 
+              to="/suivi" 
+              className="text-cornerstone-darkgray hover:text-cornerstone-brick transition-colors py-2"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Suivi
             </Link>
             <Link 
               to="/avis" 

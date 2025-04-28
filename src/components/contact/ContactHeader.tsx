@@ -11,7 +11,7 @@ const ContactHeader = () => {
         Contactez-Nous
       </h1>
       <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-        Des questions sur nos produits ou services? N'hésitez pas à nous contacter.
+        Cornerstone Briques – Votre partenaire de confiance en matériaux de construction
       </p>
     </div>
   );
